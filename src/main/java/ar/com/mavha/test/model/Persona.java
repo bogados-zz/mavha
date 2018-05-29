@@ -4,10 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 @Data
@@ -17,11 +14,13 @@ public class Persona implements Serializable {
 	@Min(1)
 	@Max(100000000)
 	private Long dni;
-	@NotNull
-	@NotEmpty
+	@NotNull(message = "validation.nombre.notNull")
+	@Pattern(regexp = "^[a-z-A-Z\\D]+$",message = "validation.nombre.badFormat")
+	@Size(min = 1, message = "validation.nombre.notEmpty")
 	private String nombre;
-	@NotNull
-	@NotEmpty
+	@NotNull(message = "validation.nombre.notNull")
+	@Pattern(regexp = "^[a-z-A-Z\\D]+$",message = "validation.nombre.badFormat")
+	@Size(min = 1, message = "validation.nombre.notEmpty")
 	private String apellido;
 	@NotNull
 	@Min(0)

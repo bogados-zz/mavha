@@ -3,6 +3,7 @@ package ar.com.mavha.test.endpoint;
 import ar.com.mavha.test.dto.CreatePersonaRequest;
 import ar.com.mavha.test.dto.CreatePersonaResponse;
 import ar.com.mavha.test.dto.PersonaListDTO;
+import io.swagger.annotations.Api;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -11,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/persona")
+@Api("Persona API")
 @Produces(MediaType.APPLICATION_JSON)
 public interface PersonaEndpoint extends BaseEndpoint {
 	@GET

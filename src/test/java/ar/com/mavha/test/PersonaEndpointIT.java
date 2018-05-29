@@ -111,7 +111,7 @@ public class PersonaEndpointIT  {
 	public void noSePuedeCrearPersonaSinDNI() {
 		CreatePersonaRequest personaRequest = generatePersonaRequest();
 		ResponseEntity<String> response1 = restTemplate.postForEntity("/persona", personaRequest, String.class);
-		Assert.assertEquals(405, response1.getStatusCodeValue());
+		Assert.assertEquals(404, response1.getStatusCodeValue());
 	}
 
 	private CreatePersonaRequest generatePersonaRequest() {

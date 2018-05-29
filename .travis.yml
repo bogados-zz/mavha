@@ -1,24 +1,23 @@
 language: java
-
 sudo: true
-
 services:
-  - docker
-
+- docker
 cache:
   directories:
-    - $HOME/.m2
+  - "$HOME/.m2"
 jdk:
-  - oraclejdk8
+- oraclejdk8
 os:
-  - linux
-
+- linux
 branches:
   only:
-    - master
-
+  - master
 after_success:
-  - cp ../target/test-mavha-1.0.0-SNAPSHOT.war .
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker build -t mavha-test-app .
-  - docker push blah/blah
+- cp target/test-mavha-1.0.0-SNAPSHOT.war .
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker build -t soyseeb/mavha-test-app .
+- docker push soyseeb/mavha-test-app
+env:
+  global:
+  - secure: JQQ2QR8cisrPL70s/XZoRtU4Jh0ttKmUpO7KloZ3o5Bsohwps+aKYaaFlrKwLbSn66yizvxRhcJmj5/KNiPqmCB5idmjLbryseb6V8KIglwZ00N1v024HAWHXhpRmDoE7J9EMeOHn+mbHkjPfRGFUDcNPonB2xfFBggBgKu9lOdvzvXqzPA1qNyqeU7Uv2Ekr9igzpXYMxqyLkDuk01xujC6bzYm2Bezt922HDoTIK6nBaOAZ5sKPqBv+1xNX1xKHBZo6AUKKTM800w+laAGU0/yxm+gptzyf8vo5w6LG3lIzRcqGgvlOZGRN9h6Ohki1EDadX+7HxZ6rNbMlXptL2VZI+zo7K6aMc05T1qHSYChjfFpONdK7G1ZvQIBu9VDtfCfWVDIXEHE+z3eELomlHUB8E0f5rZLLXGYhu3PKsfTlQ2KkE0tERq3v5SSGT4+zDfU38vhVvkTZlZ3JWUnDoRaMMTbrUV2FsnI3hX8LrJpgrAIyGwixzrgFinpldMsASoVZXaZIRifm0UqQXppec5NDRAbCYdVWMhqAe+6kwimk9JK6EO8Zd1K4SiPLYwTr1xV6p0nA0hegEfDg4Lzy1fM1X/hXsvWdKXj2SkEYshN8SuAEj4AZR9vOfI+m/jh8IfI7ypHLFUzQ81z+Z/g9SpX8ZItBNFxCuZu2/a4w6Y=
+  - secure: Td5kqibe6agzCEBpj3VZsB++i52zur2U5tb7/yGzWEH18l7ykdxrw+kPqJHkAiT7sCCpL+qUikP1rGI9VqzXdw6hr8CrC5VMDc7kGaTdDY8WcA4X6Au4vP50ufUxRyX3NyckXz1F9yKSQmdB+Sh91TNf//V7xKZj4WLVttwDgpiaKosyBi4HzW6DN/p77Im4Exvzz0R6fCTjdL5zAl5iMa1o/wlPDrtFvqWdeQVERfVivgNHPcnn6wOrYQ66KLJiUW9RNm9HRX9deVDO6761s8S34WPwFqU/817ZEgw8W0WGlcgkotjO4SUCAIYQ0wqQgvgvJpPBEhZKyM0RwxVnipZuMxe3E0Y0W4JXd+3rF6q0/606ZDvAc/9nvCSlzcXUO4cUMdZc5fXiHinLlmYezCy+1i9Z8uKnrAH8h6Lz0EWg9no4pnHJUgdgpphxDbqmdm2QYeUlMrEKmcuL8LxncVKIzpgpgTsRDK+I0UESF2DP4hrPQC3DMaIwJIvue0Db14oRT62cnMf3/wPokHXjshHMKDPbbBm83IKXLhpz5PbI+jTNdUtJe2e4bPZABLzhlVlRi0d3h6pg0XLY1AhSnnhJIsxZ9grf1Wbz98mxUbtFgu6d8duunqOWx0hXF3eIgE15hg7T1cH8yIY/uAvEN1MpWdsH9jbQK9tcKos2yW8=
