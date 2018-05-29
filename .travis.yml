@@ -1,0 +1,24 @@
+language: java
+
+sudo: true
+
+services:
+  - docker
+
+cache:
+  directories:
+    - $HOME/.m2
+jdk:
+  - oraclejdk8
+os:
+  - linux
+
+branches:
+  only:
+    - master
+
+after_success:
+  - cp ../target/test-mavha-1.0.0-SNAPSHOT.war .
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker build -t mavha-test-app .
+  - docker push blah/blah
